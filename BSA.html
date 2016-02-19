@@ -1,0 +1,286 @@
+﻿<!-- Yongji Li -->
+<!-- Boston University -->
+<!-- CS 580 -->
+<!-- Universal BSA Calculator -->
+<!-- 06/11/15 -->
+
+<!-- BSA Calculator-->
+<!-- Page that displays information about BSA based on different algorithm. -->
+<!-- DO NOT EDIT ABOVE-->
+<!-- Start page content here-->
+
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="utf-8">
+	  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	  <meta name="viewport" content="width=device-width, initial-scale=1">
+	  <title>BSA Calculator</title>
+	  <link rel="stylesheet" 
+		src="//normalize-css.googlecode.com/svn/trunk/normalize.css"
+		href="include/style/bootstrap.css">
+	  <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+      <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	  
+	  <link href='http://fonts.googleapis.com/css?family=Orbitron:400,700' rel='stylesheet' type='text/css'>
+	  <link href='http://fonts.googleapis.com/css?family=Lora' rel='stylesheet' type='text/css'>
+	  <style type="text/css">
+		h1
+		{
+			font-family: 'Orbitron', sans-serif;
+		}
+		body {
+		font-family: 'Lora', serif;;
+		font-size: 14px;
+		line-height: 1.42857;
+		}
+		.btn-primary.raised {
+		box-shadow: 0 3px 0 0 #cc1403;
+		}
+		.btn-primary.raised:active, .btn-primary.raised.active {
+		background: #33a6cc;
+		box-shadow: none;
+		margin-bottom: -3px;
+		margin-top: 3px;
+}
+		</style>
+	</head>
+	<body>
+	<div class="container">
+	<br>
+	<div class = "row">
+	<div class="col-md-12" align=center >   
+		<h1 id="title">Universal Body Surface Area (BSA) Calculator </h1>
+		<p style="font-family: 'Orbitron', sans-serif;">Click on the Tabs to enter your weight and height using standard or metric measures..</p>
+	</div>
+    <ul class="nav nav-tabs">
+		<li class="active"><a href="#english" onclick = "resetFunction()">Standard</a></li>
+		<li><a href="#metric"  onclick = "resetFunction()">metric</a></li>
+    </ul>
+
+  <div class="tab-content">
+    <div id="english" class="tab-pane fade in active">
+	<br>
+	    <div class="col-md-4">
+		<div class="form-group">
+			<label for="feet">Height:(feet)</label>
+			<input type="number" class="form-control" id="feet" min="1" max="8">
+		</div>
+		</div>
+		<div class="col-md-4">
+		<div class="form-group">
+			<label for="inch">Height:(inch)</label>
+			<input type="number" class="form-control" id="inch" min="0" max="12">
+		</div>
+		</div>
+		<div class="col-md-4">
+		<div class="form-group">
+			<label for="Weightlb">Weight(lb)</label>
+			<input type="number" class="form-control" id="weightlb" min="1" max="1000">
+		</div>
+		</div>
+		&nbsp;&nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-primary btn-md raised" onclick="calc1Function()" style="border:#f7b667; background-color:#ffbe6f;color:#9c7341;">Calculate BSA</button>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<button type="button" class="btn btn-primary btn-md raised" onclick="resetFunction()" style="border:#f7b667;background-color:#ffbe6f; color:#9c7341;">Reset</button>
+		<br>
+		<br>
+	
+    </div>
+    <div id="metric" class="tab-pane fade">
+	<br>
+	    <div class=col-md-6>
+		<div class="form-group">
+			<label for="height">Height:(cm)</label>
+			<input type="number" class="form-control" id="height" min="1" max="300">
+		</div>
+		</div>
+		<div class=col-md-6>
+		<div class="form-group">
+			<label for="Weight">Weight(Kg)</label>
+			<input type="number" class="form-control" id="weight" min="1" max="500">
+			
+		</div>
+		</div>
+		&nbsp;&nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-primary btn-md raised" onclick="calc2Function()" style="border:#e80984; background-color:#ffb7e6;color:#e80984;">Calculate BSA</button>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<button type="button" class="btn btn-primary btn-md raised" onclick="resetFunction()" style="border:#e80984;background-color:#ffb7e6; color:#e80984;">Reset</button>
+	
+		<br><br>
+	</div>
+<script>
+function resetFunction()
+{
+document.getElementById("weightlb").value="";
+document.getElementById("feet").value="";
+document.getElementById("inch").value="";
+document.getElementById("height").value="";
+document.getElementById("weight").value="";
+document.getElementById("1").value="";
+document.getElementById("2").value="";
+document.getElementById("3").value="";
+document.getElementById("4").value="";
+}
+function calc1Function()
+{ 
+    var x = document.getElementById("feet").value;       //input check
+	var y = document.getElementById("inch").value;
+	var z = document.getElementById("weightlb").value;
+   if (x == null || x == "" || y == null || y == ""  ) {
+        alert("Please check your input of height");
+        return false;
+     } else if (z == null || z == ""){
+		alert("Please check your input of weight");
+        return false;
+	}  else if (!(/^(\+|-)?\d+$/.test( x )) || !(/^(\+|-)?\d+$/.test( y )) || x < 1 || x > 8 || y < 0 || y > 11 ){
+		alert("Please validate your input of height");
+        return false;
+	}  else if (z < 1 || z > 800 ){
+		alert("Please validate your input of weight");
+		document.getElementById("weightlb").focus;
+        return false;
+	} 
+	
+	else {
+		var h1 = (parseInt(x) * 12 + parseInt(y)) * 2.54;
+		var w1 = z * 0.453592;
+	    calcBSA(h1,w1);
+
+    }
+	
+}
+
+function calc2Function()
+{
+   var m = document.getElementById("height").value;      //input check
+   var n = document.getElementById("weight").value;
+   if (m == null || m == ""  ) {
+        alert("Please check your input of height");
+        return false;
+     } else if (n == null || n == ""){
+		alert("Please check your input of weight");
+        return false;
+	}  else if ( m < 1 || m > 250){
+		alert("Please validate your input of height");
+        return false;
+	}  else if (n < 1 || n > 300 ){
+		alert("Please validate your input of weight");
+		document.getElementById("weight").focus;
+        return false;
+	} 
+	
+	else {
+	    calcBSA(m,n);	
+    }
+}
+function calcBSA(i,j)
+{	var a = 0.007184  * Math.pow(i,0.725)   * Math.pow(j,0.425);
+	document.getElementById("1").value  = a;
+	
+	var b = 0.0235    * Math.pow(i,0.42246) * Math.pow(j,0.51456);
+	document.getElementById("2").value  = b;
+
+	var c = 0.024265  * Math.pow(i,0.3964)  * Math.pow(j,0.5378);
+/*	var num1 = parseFloat(i);
+	var num2 = parseFloat(j);
+	var num3 = 1000 * num2;
+	var temp = 0.7285 - (0.0188 * Math.log(num2));
+	var c = 0.0003207  * Math.pow(num1,0.3) * Math.pow(num3,temp);
+// 0.0003207 x height (cm)0.3 x weight (grams)0.7285 - (0.0188 x log(weight)) */
+	document.getElementById("3").value  = c;
+	
+	var d = Math.pow((i * j)/3600,0.5);
+	document.getElementById("4").value  = d;
+}
+
+$(document).ready(function(){
+    $(".nav-tabs a").click(function(){
+        $(this).tab('show');
+    });
+    $('.nav-tabs a').on('shown.bs.tab', function(event){
+        var x = $(event.target).text();         // active tab
+        var y = $(event.relatedTarget).text();  // previous tab
+        $(".act span").text(x);
+        $(".prev span").text(y);
+    });
+});
+</script>
+	
+</div> 
+				<div class = col-md-3>
+			<div class="form-group">
+				<label for="1">DuBois and DuBois<sup>1</sup> : (m<sup>2</sup>)</label>
+				<input type="text" class="form-control" id="1">
+			</div>
+		</div>
+		<div class = col-md-3>
+			<div class="form-group">
+				<label for="2">Gehan and George<sup>2</sup> : (m<sup>2</sup>)</label>
+				<input type="text" class="form-control" id="2">
+			</div>
+		</div>
+		<div class = col-md-3>
+			<div class="form-group">
+				<label for="3">Haycock<sup>3</sup> : (m<sup>2</sup>)</label>
+				<input type="text" class="form-control" id="3">
+			</div>
+		</div>
+		<div class = col-md-3>
+			<div class="form-group">
+				<label for="4">Mosteller<sup>4</sup> : (m<sup>2</sup>)</label>
+				<input type="text" class="form-control" id="4">
+			</div>
+		</div>
+
+		<div class=col-md-6>
+			<div class="panel-group" style="text-align:center">
+				<div class="panel panel-info">
+				<div class="panel-heading">DuBois and DuBois<sup>1</sup> :</div>
+				<div class="panel-body">Equation: BSA(m<sup>2</sup>) = 0.007184 * Height(cm)<sup>0.725</sup> * Weight(kg)<sup>0.425</sup> 
+				</div>
+			</div>
+			</div>
+		</div>
+		<div class=col-md-6>
+			<div class="panel-group" style="text-align:center">
+			<div class="panel panel-success">
+				<div class="panel-heading">Gehan and George<sup>2</sup> :</div>
+				<div class="panel-body">Equation: BSA (m<sup>2</sup>) = 0.0235 * Height(cm)<sup>0.42246</sup> * Weight(kg)<sup>0.51456</sup> </div>
+			</div>
+			</div>
+		</div>
+		<div class=col-md-6>
+			<div class="panel-group" style="text-align:center">
+			<div class="panel panel-warning">
+			  <div class="panel-heading">Haycock<sup>3</sup> :</div>
+			  <div class="panel-body">Equation: BSA (m<sup>2</sup>) = 0.024265 * Height(cm)<sup>0.3964</sup> * Weight(kg)<sup>0.5378</sup> </div>
+			</div> 
+		</div>
+		</div>
+		<div class=col-md-6>
+		<div class="panel-group" style="text-align:center">
+			<div class="panel panel-danger">
+			  <div class="panel-heading">Mosteller<sup>4</sup> :</div>
+			  <div class="panel-body"> Equation: BSA (m<sup>2</sup>) = [(Height(cm) * Weight(kg))/3600]<sup>0.5</sup></div>
+			</div>
+		</div>
+		</div>
+	<div class = col-md-12>
+	<h5 style="font-family: 'Orbitron', sans-serif;">References</h5>
+	<p>1) DuBois D, DuBois DF. A formula to estimate the approximate surface area if height and weight be known.  Arch Int Med 1916;17:863-71.
+   <br>2) Gehan EA, George SL. Estimation of human body surface area from height and weight. Cancer Chemother Rep 1970;54:225-35.
+   <br>3)  Haycock GB, Schwartz GJ, Wisotsky DH. Geometric method for measuring body surface area: A height-weight formula validated in infants, children and adults.  J Pediatr 1978;93:62-6.
+   <br>4) Mosteller RD. Simplified calculation of body-surface area. N Engl J Med 1987;317:1098.</p>
+   <hr>
+    
+    <h5 align=right>CS580 Assignment 3</h5>
+	<h6 align=right>by Yongji Li</h6>
+	</div>
+	</div>
+	</body>
+</html> 
+
+<!-- End page content here-->
+<!-- AUTHOR Yongji Li-->
+<!-- DO NOT EDIT below-->

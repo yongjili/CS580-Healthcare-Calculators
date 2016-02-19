@@ -1,0 +1,297 @@
+﻿<!-- Yongji Li -->
+<!-- Boston University -->
+<!-- CS 580 -->
+<!-- Universal BMI Calculator -->
+<!-- 06/04/15 -->
+
+
+<!-- BMI Calculator-->
+<!-- Page that displays information about BMI. -->
+
+
+<!-- DO NOT EDIT ABOVE-->
+<!-- Start page content here-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="utf-8">
+	  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	  <meta name="viewport" content="width=device-width, initial-scale=1">
+	  <title>BMI Calculator</title>
+	  <link rel="stylesheet" 
+	  src="//normalize-css.googlecode.com/svn/trunk/normalize.css"
+	  href="include/style/bootstrap.css">
+	  <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+      <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	  
+</head>
+<body>
+	<div class="container">
+	<br><br>
+	<div class="col-md-12" align=center>   
+		<h1>Universal BMI Calculator</h1>
+		<p>Click on the Tabs to enter your weight and height using standard or metric measures..</p>
+	</div>
+  <ul class="nav nav-tabs">
+    <li class="active"><a href="#english">US/Europe</a></li>
+    <li><a href="#metric">Japan/Hongkong</a></li>
+  </ul>
+
+  <div class="tab-content">
+    <div id="english" class="tab-pane fade in active">
+      <h3>Standard</h3>
+	    <div class="col-md-4">
+		<div class="form-group">
+			<label for="feet">Height:(feet)</label>
+			<input type="number" class="form-control" id="feet" min="1" max="8">
+		</div>
+		</div>
+		<div class="col-md-4">
+		<div class="form-group">
+			<label for="inch">Height:(inch)</label>
+			<input type="number" class="form-control" id="inch" min="0" max="12">
+		</div>
+		</div>
+		<div class="col-md-4">
+		<div class="form-group">
+			<label for="Weightlb">Weight(lb)</label>
+			<input type="number" class="form-control" id="weightlb" min="1" max="1000">
+		</div>
+		</div>
+		&nbsp;&nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-primary btn-md" onclick="calc1Function()">Calculate My BMI</button>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<button type="button" class="btn btn-primary btn-md" onclick="reset1Function()">Reset</button>
+		<br>
+		<div class=col-md-12>
+            <br> 		
+			<div class="form-group">
+				<label for="bmie">My Body Mass Index</label>
+				<input type="text" class="form-control" id="bmie">
+			</div>
+			<div class="form-group">
+				<label for="statuse">My Weight Status</label>
+				<input type="text" class="form-control" id="statuse">
+			</div>
+		</div>	
+		<div class=col-md-12>
+		<div class="panel-group">
+			<div class="panel panel-info">
+			  <div class="panel-heading">Underweight (BMI range:16.0-18.5)</div>
+			  <div class="panel-body">If your BMI is under 16, that means Severely Underweight. <br>An advice for underweight people is to take some healthy high-energy food.</div>
+			</div>
+			
+			<div class="panel panel-success">
+			  <div class="panel-heading">Healthy Weight (BMI range:18.5-25.0)</div>
+			  <div class="panel-body">Awesome! Continue to keep in good health!</div>
+			</div>
+
+			<div class="panel panel-warning">
+			  <div class="panel-heading">Overweight (BMI range:25.0-30.0)</div>
+			  <div class="panel-body">If you want to keep fit, then don't diet. Just eat healthy and exercise.</div>
+			</div>
+
+			<div class="panel panel-danger">
+			  <div class="panel-heading">Obese (BMI range:30.0-35.0)</div>
+			  <div class="panel-body"> If your BMI is larger than 40.0, that means Extremely Obese. That is not a good sign<br> Obese is a problem. And the health problems it causes make it even more of a problem.</div>
+			</div>
+		</div>
+	</div>
+    </div>
+    <div id="metric" class="tab-pane fade">
+      <h3>Metric</h3>  
+	  
+	    <div class=col-md-6>
+		<div class="form-group">
+			<label for="height">Height:(cm)</label>
+			<input type="number" class="form-control" id="height" min="1" max="300">
+		</div>
+		</div>
+		<div class=col-md-6>
+		<div class="form-group">
+			<label for="Weight">Weight(Kg)</label>
+			<input type="number" class="form-control" id="weight" min="1" max="500">
+		</div>
+		</div>
+		&nbsp;&nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-primary btn-md" onclick="calc2Function()">Calculate My BMI</button>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<button type="button" class="btn btn-primary btn-md" onclick="reset2Function()">Reset</button>
+		<br>
+		<div class=col-md-12>
+		<br>
+			<div class="form-group">
+				<label for="bmi">My Body Mass Index</label>
+				<input type="text" class="form-control" id="bmi">
+			</div>
+			<div class="form-group">
+				<label for="status">My Weight Status</label>
+				<input type="text" class="form-control" id="status">
+			</div>
+		</div>	
+	
+	<br>
+
+	<div class=col-md-12>
+		<div class="panel-group">
+			<div class="panel panel-info">
+			  <div class="panel-heading">Underweight (BMI range: < 18.5)</div>
+			  <div class="panel-body">An advice is to take some healthy high-energy food.</div>
+			</div>
+			
+			<div class="panel panel-success">
+			  <div class="panel-heading">Healthy Weight (BMI range:18.5-22.9)</div>
+			  <div class="panel-body">Awesome! Continue to keep in good health！ </div>
+			</div>
+
+			<div class="panel panel-warning">
+			  <div class="panel-heading">Overweight (BMI range:23.0-24.9)</div>
+			  <div class="panel-body">If you want to keep fit, then don't diet. Just eat healthy and exercise.</div>
+			</div>
+
+			<div class="panel panel-danger">
+			  <div class="panel-heading">Obese (BMI range: >25.0)</div>
+			  <div class="panel-body">Obesity is a problem. And the health problems it causes make it even more of a problem.</div>
+			</div>
+		</div>
+	</div>
+
+
+
+<script>
+function validateFormStandard() {
+
+}
+function reset1Function()
+{
+document.getElementById("weightlb").value="";
+document.getElementById("feet").value="";
+document.getElementById("inch").value="";
+document.getElementById("bmie").value="";
+document.getElementById("statuse").value="";
+document.getElementById("statuse").style.background = 'white';
+}
+function calc1Function()
+{ 
+    var x = document.getElementById("feet").value;       //input check
+	var y = document.getElementById("inch").value;
+	var z = document.getElementById("weightlb").value;
+   if (x == null || x == "" || y == null || y == ""  ) {
+        alert("Please check your input of height");
+        return false;
+     } else if (z == null || z == ""){
+		alert("Please check your input of weight");
+        return false;
+	}  else if (!(/^(\+|-)?\d+$/.test( x )) || !(/^(\+|-)?\d+$/.test( y )) || x < 1 || x > 8 || y < 0 || y > 11 ){
+		alert("Please validate your input of height");
+        return false;
+	}  else if (z < 1 || z > 800 ){
+		alert("Please validate your input of weight");
+		document.getElementById("weightlb").focus;
+        return false;
+	} 
+	
+	else {
+    }
+	
+ var i = document.getElementById("inch").value;
+ var j = document.getElementById("feet").value;
+ var k = parseInt(j) * 12 + parseInt(i);
+ document.getElementById("bmie").value= (document.getElementById("weightlb").value * 703) / (k*k);
+ var bmie=document.getElementById("bmie").value;
+ if (bmie < 18.5) {
+    document.getElementById("statuse").value = "Underweight";
+	document.getElementById("statuse").style.background = 'lightblue';
+ } else if (bmie >= 18.5 && bmie< 25) {
+    document.getElementById("statuse").value = " Healthy Weight";
+	document.getElementById("statuse").style.background = 'lightgreen';
+ } else if (bmie >=25 && bmie <=30) {
+    document.getElementById("statuse").value = " Overweight";
+	document.getElementById("statuse").style.background = 'lightyellow';
+ } else
+ { 
+    document.getElementById("statuse").value = " Obese";
+	document.getElementById("statuse").style.background = 'lightpink'; 
+	if (bmie >= 40){
+	alert("Extremely Obese!");
+	} 
+ }
+}
+function reset2Function()
+{
+document.getElementById("weight").value="";
+document.getElementById("height").value="";
+document.getElementById("bmi").value="";
+document.getElementById("status").value="";
+document.getElementById("status").style.background = 'white';
+}
+function calc2Function()
+{
+   var x = document.getElementById("height").value;      //input check
+	var y = document.getElementById("weight").value;
+   if (x == null || x == ""  ) {
+        alert("Please check your input of height");
+        return false;
+     } else if (y == null || y == ""){
+		alert("Please check your input of weight");
+        return false;
+	}  else if ( x < 1 || x > 250){
+		alert("Please validate your input of height");
+        return false;
+	}  else if (y < 1 || y > 300 ){
+		alert("Please validate your input of weight");
+		document.getElementById("weight").focus;
+        return false;
+	} 
+	
+	else {
+    }
+
+ var i = document.getElementById("height").value/100;
+ document.getElementById("bmi").value=document.getElementById("weight").value/(i*i);
+ var bmi=document.getElementById("bmi").value; 
+ if (bmi < 18.5) {
+    document.getElementById("status").value = "Underweight";
+	document.getElementById("status").style.background = 'lightblue';
+ } else if (bmi >= 18.5 && bmi< 22.9) {
+    document.getElementById("status").value = " Healthy Weight";
+	document.getElementById("status").style.background = 'lightgreen';
+ } else if (bmi >=22.9 && bmi <=24.9) {
+    document.getElementById("status").value = " Overweight";
+	document.getElementById("status").style.background = 'lightyellow';
+ } else
+ { 
+   document.getElementById("status").value = " Obese";
+	document.getElementById("status").style.background = 'lightpink'; 
+ }   
+}
+
+$(document).ready(function(){
+    $(".nav-tabs a").click(function(){
+        $(this).tab('show');
+    });
+    $('.nav-tabs a').on('shown.bs.tab', function(event){
+        var x = $(event.target).text();         // active tab
+        var y = $(event.relatedTarget).text();  // previous tab
+        $(".act span").text(x);
+        $(".prev span").text(y);
+    });
+});
+</script>
+	</div>
+</div> 
+
+    
+	<hr>
+    <div class=col-md-12>
+    <h5 align=right style="font-weight:bold">CS580 Assignment 2</h5>
+	<h6 align=right style="font-weight:bold">by Yongji Li</h6>
+	</div>
+	</body>
+</html> 
+
+<!-- End page content here-->
+<!-- AUTHOR Yongji Li-->
+<!-- DO NOT EDIT below-->
